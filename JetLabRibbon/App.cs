@@ -34,12 +34,26 @@ namespace JetLabRibbon
 				"cmdPlaceGroup",
 				"Copy" + System.Environment.NewLine + "  Group  ",
 				thisAssemblyPath,
-				"JetLabPlaceGroup.Class1");
+				"JetLabPlaceGroup.PlaceGroup");
 
 			PushButton pb1 = ribbonPanel1.AddItem(b1Data) as PushButton;
-			pb1.ToolTip = "Select Groupe to Copying";
+			pb1.ToolTip = "Copy Selected Group";
 			BitmapImage pb1Image = new BitmapImage(new Uri("pack://application:,,,/JetLabRibbon;component/Resources/JetLab.png"));
 			pb1.LargeImage = pb1Image;
+
+
+			// create push button for Browser
+			PushButtonData b2Data = new PushButtonData(
+				"cmdOpenBrowser",
+				"Families" + System.Environment.NewLine + "  Browser  ",
+				thisAssemblyPath,
+				"JetLabRibbon.JetLab.Browser");
+
+			PushButton pb2 = ribbonPanel2.AddItem(b2Data) as PushButton;
+			pb2.ToolTip = "Open Families Browser";
+			BitmapImage pb2Image = new BitmapImage(new Uri("pack://application:,,,/JetLabRibbon;component/Resources/JetLab.png"));
+			pb2.LargeImage = pb2Image;
+
 		}
 
 		public Result OnShutdown(UIControlledApplication application)

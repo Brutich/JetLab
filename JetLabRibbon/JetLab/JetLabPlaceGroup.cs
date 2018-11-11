@@ -17,7 +17,7 @@ namespace JetLabPlaceGroup
 
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
-    public class Class1 : IExternalCommand
+    public class PlaceGroup : IExternalCommand
 
     {
 
