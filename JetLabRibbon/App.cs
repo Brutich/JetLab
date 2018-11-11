@@ -21,7 +21,10 @@ namespace JetLabRibbon
 			application.CreateRibbonTab(tabName);
 
 			// Add a new ribbon panel
-			RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "Tools");
+			RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Tools");
+
+			// Add a another one ribbon panel
+			RibbonPanel ribbonPanel2 = application.CreateRibbonPanel(tabName, "Browser");
 
 			// Get dll assembly path
 			string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
@@ -29,12 +32,12 @@ namespace JetLabRibbon
 			// create push button for CurveTotalLength
 			PushButtonData b1Data = new PushButtonData(
 				"cmdPlaceGroup",
-				"Total" + System.Environment.NewLine + "  Length  ",
+				"Copy" + System.Environment.NewLine + "  Group  ",
 				thisAssemblyPath,
 				"JetLabPlaceGroup.Class1");
 
-			PushButton pb1 = ribbonPanel.AddItem(b1Data) as PushButton;
-			pb1.ToolTip = "Select Multiple Lines to Obtain Total Length";
+			PushButton pb1 = ribbonPanel1.AddItem(b1Data) as PushButton;
+			pb1.ToolTip = "Select Groupe to Copying";
 			BitmapImage pb1Image = new BitmapImage(new Uri("pack://application:,,,/JetLabRibbon;component/Resources/JetLab.png"));
 			pb1.LargeImage = pb1Image;
 		}
