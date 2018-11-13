@@ -54,11 +54,11 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="JetLab\Browser.cs" />
-    <Compile Include="JetLab\Form1.cs">
+    <Compile Include="JetLab\FormBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JetLab\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="JetLab\FormBrowser.Designer.cs">
+      <DependentUpon>FormBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="JetLab\JetLabPlaceGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +70,11 @@
     <Content Include="JetLabRibbon.addin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JetLab\FormBrowser.resx">
+      <DependentUpon>FormBrowser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
