@@ -16,10 +16,5 @@ namespace JetLabRibbon.JetLab
 		{
 			InitializeComponent();
 		}
-
-		private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-		{
-
-		}
 	}
 }
