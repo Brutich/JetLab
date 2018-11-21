@@ -57,11 +57,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(18, 74);
+            this.button1.Location = new System.Drawing.Point(12, 58);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 41);
+            this.button1.Size = new System.Drawing.Size(136, 31);
             this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
+            this.button1.Text = "Run Script";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonRunScript_Click);
             // 

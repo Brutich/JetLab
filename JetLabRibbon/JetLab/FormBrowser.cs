@@ -39,7 +39,7 @@ namespace JetLabRibbon.JetLab
 
         private void buttonRunScript_Click(object sender, EventArgs e)
         {
-            JetLabPlaceGroup.PlaceGroup placeGroupe = new JetLabPlaceGroup.PlaceGroup();
+            //JetLabPlaceGroup.PlaceGroup placeGroupe = new JetLabPlaceGroup.PlaceGroup();
         }
     }
 }
