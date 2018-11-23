@@ -12,6 +12,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 
 namespace JetLabRibbon.JetLab
+
 {
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	class Browser : IExternalCommand

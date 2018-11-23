@@ -25,7 +25,7 @@ namespace JetLabPlaceGroup
 
         {
 
-        //Get application and documnet objects
+            //Get application and documnet objects
             UIApplication uiapp = commandData.Application;
             Document doc = uiapp.ActiveUIDocument.Document;
 
