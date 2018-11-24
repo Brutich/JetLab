@@ -20,7 +20,7 @@ namespace JetLabRibbon.JetLab
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
 
-			FormBrowser fm = new FormBrowser();
+			FormBrowser fm = new FormBrowser(commandData, ref message, elements);
 			fm.Show();
 
 			return Result.Succeeded;

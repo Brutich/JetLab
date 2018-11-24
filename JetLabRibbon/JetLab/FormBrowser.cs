@@ -8,15 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 
 namespace JetLabRibbon.JetLab
 {
-	public partial class FormBrowser : Form
-	{
-		public FormBrowser()
+	public partial class FormBrowser : System.Windows.Forms.Form
+    {
+        private ExternalCommandData commandData;
+        private string message;
+        private ElementSet elements;
+
+        public FormBrowser()
 		{
 			InitializeComponent();
 		}
+
+        public FormBrowser(ExternalCommandData commandData, ref string message, ElementSet elements)
+        {
+            this.commandData = commandData;
+            this.message = message;
+            this.elements = elements;
+            InitializeComponent();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -45,6 +59,7 @@ namespace JetLabRibbon.JetLab
         private void buttonRunScript_Click(object sender, EventArgs e)
         {
             JetLabPlaceGroup.PlaceGroup placeGroupe = new JetLabPlaceGroup.PlaceGroup();
+            placeGroupe.Execute(commandData, ref message, elements);
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
