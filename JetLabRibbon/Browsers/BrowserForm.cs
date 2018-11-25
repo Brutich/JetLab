@@ -34,16 +34,7 @@ namespace JetLabRibbon.Browsers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.RestoreDirectory = true;
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string fileName = openFileDialog1.FileName;
-                MessageBox.Show(fileName);
-            }
+            System.Diagnostics.Process.Start("http://google.com");
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -70,6 +61,16 @@ namespace JetLabRibbon.Browsers
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -59,11 +59,11 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Browsers\Browser.cs" />
-    <Compile Include="Browsers\FormBrowser.cs">
+    <Compile Include="Browsers\BrowserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Browsers\FormBrowser.Designer.cs">
-      <DependentUpon>FormBrowser.cs</DependentUpon>
+    <Compile Include="Browsers\BrowserForm.Designer.cs">
+      <DependentUpon>BrowserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Browsers\JtWindowHandle.cs" />
     <Compile Include="JetLab\JetLabPlaceGroup.cs" />
@@ -85,8 +85,8 @@
     <Content Include="Resources\SavedImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Browsers\FormBrowser.resx">
-      <DependentUpon>FormBrowser.cs</DependentUpon>
+    <EmbeddedResource Include="Browsers\BrowserForm.resx">
+      <DependentUpon>BrowserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
