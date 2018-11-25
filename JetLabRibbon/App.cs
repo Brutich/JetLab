@@ -13,6 +13,40 @@ namespace JetLabRibbon
 {
 	class App : IExternalApplication
 	{
+
+        /*
+        // define a method that will add Failure Messege
+        static void AddFailureMessege(UIControlledApplication application)
+        {
+            Document document = application.ControlledApplication.
+
+            // Create youw own new failure definition Ids
+            Guid guid1 = new Guid(
+              "d1cf2412-08fe-476b-a6e6-e9a00583c52d");
+
+            FailureDefinitionId m_idWarning
+              = new FailureDefinitionId(guid1);
+
+            // Create failure definitions and add resolutions
+            FailureDefinition m_fdWarning
+              = FailureDefinition.CreateFailureDefinition(
+                m_idWarning, FailureSeverity.Warning,
+                "Textvalue is changed for all instances "
+                + "in textchain");
+
+            m_fdWarning.SetDefaultResolutionType(
+              FailureResolutionType.SetValue);
+
+
+            FailureMessage fm = new FailureMessage(
+                ExternalApplication.m_idWarning);
+
+            document.PostFailure(fm);
+        }
+        */
+
+
+
 		// define a method that will create our tab and button
 		static void AddRibbonPanel(UIControlledApplication application)
 		{
@@ -29,21 +63,34 @@ namespace JetLabRibbon
 			// Get dll assembly path
 			string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
 
-			// create push button for CurveTotalLength
+			// create push button for PlaceGroupe
 			PushButtonData b1Data = new PushButtonData(
 				"cmdPlaceGroup",
 				"Copy" + System.Environment.NewLine + "  Group  ",
 				thisAssemblyPath,
 				"JetLab.PlaceGroup");
 
-			PushButton pb1 = ribbonPanel1.AddItem(b1Data) as PushButton;
+            PushButton pb1 = ribbonPanel1.AddItem(b1Data) as PushButton;
 			pb1.ToolTip = "Copy Selected Group";
 			BitmapImage pb1Image = new BitmapImage(new Uri("pack://application:,,,/JetLabRibbon;component/Resources/JetLab.png"));
 			pb1.LargeImage = pb1Image;
 
+            
+            // create push button for CreateLevel
+            PushButtonData b3Data = new PushButtonData(
+                "cmdCreateLevels",
+                "Create" + System.Environment.NewLine + "  Levels  ",
+                thisAssemblyPath,
+                "JetLabRibbon.JetLab.CreateLevels");
 
-			// create push button for Browser
-			PushButtonData b2Data = new PushButtonData(
+            PushButton pb3 = ribbonPanel1.AddItem(b3Data) as PushButton;
+            pb3.ToolTip = "Create Levels";
+            BitmapImage pb3Image = new BitmapImage(new Uri("pack://application:,,,/JetLabRibbon;component/Resources/JetLab.png"));
+            pb3.LargeImage = pb3Image;
+            
+
+            // create push button for Browser
+            PushButtonData b2Data = new PushButtonData(
 				"cmdOpenBrowser",
 				"Families" + System.Environment.NewLine + "  Browser  ",
 				thisAssemblyPath,

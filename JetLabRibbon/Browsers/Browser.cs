@@ -24,12 +24,12 @@ namespace JetLabRibbon.Browsers
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
  
-            FormBrowser fbrowser = new FormBrowser(commandData, ref message, elements);
+            BrowserForm fbrowser = new BrowserForm(commandData, ref message, elements);
 
             IWin32Window revit_window = new JtWindowHandle(ComponentManager.ApplicationWindow);
             fbrowser.Show(revit_window);
-
-			return Result.Succeeded;
+            
+            return Result.Succeeded;
 		}
 	}
 }

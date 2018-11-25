@@ -1,6 +1,6 @@
 ﻿namespace JetLabRibbon.Browsers
 {
-	partial class FormBrowser
+	partial class BrowserForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
             this.openFileDialog = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.runScript = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -46,15 +46,15 @@
             this.openFileDialog.UseVisualStyleBackColor = true;
             this.openFileDialog.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // runScript
             // 
-            this.button1.Location = new System.Drawing.Point(510, 407);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 31);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Run Script";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonRunScript_Click);
+            this.runScript.Location = new System.Drawing.Point(510, 407);
+            this.runScript.Name = "runScript";
+            this.runScript.Size = new System.Drawing.Size(136, 31);
+            this.runScript.TabIndex = 2;
+            this.runScript.Text = "Run Script";
+            this.runScript.UseVisualStyleBackColor = true;
+            this.runScript.Click += new System.EventHandler(this.buttonRunScript_Click);
             // 
             // checkedListBox1
             // 
@@ -98,20 +98,20 @@
             this.comboBox1.TabIndex = 4;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // FormBrowser
+            // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.runScript);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.openFileDialog);
             this.DoubleBuffered = true;
             this.MaximumSize = new System.Drawing.Size(816, 489);
             this.MinimumSize = new System.Drawing.Size(816, 489);
-            this.Name = "FormBrowser";
+            this.Name = "BrowserForm";
             this.ShowIcon = false;
             this.Text = "Family Browser";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -122,7 +122,7 @@
         #endregion
 
         private System.Windows.Forms.Button openFileDialog;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button runScript;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBox1;

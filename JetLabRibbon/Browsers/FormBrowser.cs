@@ -13,18 +13,18 @@ using Autodesk.Revit.UI;
 
 namespace JetLabRibbon.Browsers
 {
-	public partial class FormBrowser : System.Windows.Forms.Form
+	public partial class BrowserForm : System.Windows.Forms.Form
     {
         private ExternalCommandData commandData;
         private string message;
         private ElementSet elements;
 
-        public FormBrowser()
+        public BrowserForm()
 		{
 			InitializeComponent();
 		}
 
-        public FormBrowser(ExternalCommandData commandData, ref string message, ElementSet elements)
+        public BrowserForm(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             this.commandData = commandData;
             this.message = message;
@@ -58,8 +58,10 @@ namespace JetLabRibbon.Browsers
 
         private void buttonRunScript_Click(object sender, EventArgs e)
         {
+            /*
             JetLab.PlaceGroup placeGroupe = new JetLab.PlaceGroup();
             placeGroupe.Execute(commandData, ref message, elements);
+            */
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
