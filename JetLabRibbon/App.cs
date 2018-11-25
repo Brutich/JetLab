@@ -24,7 +24,7 @@ namespace JetLabRibbon
 			RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Tools");
 
 			// Add a another one ribbon panel
-			RibbonPanel ribbonPanel2 = application.CreateRibbonPanel(tabName, "Browser");
+			RibbonPanel ribbonPanel2 = application.CreateRibbonPanel(tabName, "Browsers");
 
 			// Get dll assembly path
 			string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
@@ -34,7 +34,7 @@ namespace JetLabRibbon
 				"cmdPlaceGroup",
 				"Copy" + System.Environment.NewLine + "  Group  ",
 				thisAssemblyPath,
-				"JetLabPlaceGroup.PlaceGroup");
+				"JetLab.PlaceGroup");
 
 			PushButton pb1 = ribbonPanel1.AddItem(b1Data) as PushButton;
 			pb1.ToolTip = "Copy Selected Group";
@@ -47,7 +47,7 @@ namespace JetLabRibbon
 				"cmdOpenBrowser",
 				"Families" + System.Environment.NewLine + "  Browser  ",
 				thisAssemblyPath,
-				"JetLabRibbon.JetLab.Browser");
+				"JetLabRibbon.Browsers.Browser");
 
 			PushButton pb2 = ribbonPanel2.AddItem(b2Data) as PushButton;
 			pb2.ToolTip = "Open Families Browser";

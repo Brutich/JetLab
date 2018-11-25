@@ -1,4 +1,4 @@
-﻿namespace JetLabRibbon.JetLab
+﻿namespace JetLabRibbon.Browsers
 {
 	partial class FormBrowser
 	{

@@ -11,7 +11,7 @@ using System.IO;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace JetLabRibbon.JetLab
+namespace JetLabRibbon.Browsers
 {
 	public partial class FormBrowser : System.Windows.Forms.Form
     {
@@ -58,7 +58,7 @@ namespace JetLabRibbon.JetLab
 
         private void buttonRunScript_Click(object sender, EventArgs e)
         {
-            JetLabPlaceGroup.PlaceGroup placeGroupe = new JetLabPlaceGroup.PlaceGroup();
+            JetLab.PlaceGroup placeGroupe = new JetLab.PlaceGroup();
             placeGroupe.Execute(commandData, ref message, elements);
         }
 
