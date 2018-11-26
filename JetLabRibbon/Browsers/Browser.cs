@@ -21,15 +21,46 @@ namespace JetLabRibbon.Browsers
 	[Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 	class Browser : IExternalCommand
 	{
+        
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
- 
-            BrowserForm fbrowser = new BrowserForm(commandData, ref message, elements);
+            try
+            {
+                // Quit if active document is null
+                if (null == commandData.Application.ActiveUIDocument.Document)
+                {
+                    message = Properties.Resources.ResourceManager.GetString("NullActiveDocument");
+                    return Autodesk.Revit.UI.Result.Failed;
+                }
 
-            IWin32Window revit_window = new JtWindowHandle(ComponentManager.ApplicationWindow);
-            fbrowser.Show(revit_window);
-            
+                // Show operation dialog
+                BrowserOperationData optionData = new BrowserOperationData(commandData);
+
+                /*
+                using (BrowserForm mainForm = new BrowserForm(optionData))
+                {
+                    if (mainForm.ShowDialog() == DialogResult.Cancel)
+                    {
+                        return Autodesk.Revit.UI.Result.Cancelled;
+                    }
+                }
+                */
+
+                BrowserForm mainForm = new BrowserForm(optionData);
+                mainForm.ShowDialog();
+
+
+                // Perform the operation
+                optionData.Operate();
+            }
+            catch (Exception ex)
+            {
+                message = ex.ToString();
+                return Autodesk.Revit.UI.Result.Failed;
+            }
+
             return Result.Succeeded;
-		}
+        }
+        
 	}
 }

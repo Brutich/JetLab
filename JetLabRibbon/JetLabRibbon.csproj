@@ -65,7 +65,8 @@
     <Compile Include="Browsers\BrowserForm.Designer.cs">
       <DependentUpon>BrowserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Browsers\JtWindowHandle.cs" />
+    <Compile Include="Browsers\BrowserOperationData.cs" />
+    <Compile Include="Browsers\Enum.cs" />
     <Compile Include="JetLab\JetLabPlaceGroup.cs" />
     <Compile Include="JetLab\CreateLevels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

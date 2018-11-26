@@ -15,20 +15,19 @@ namespace JetLabRibbon.Browsers
 {
 	public partial class BrowserForm : System.Windows.Forms.Form
     {
-        private ExternalCommandData commandData;
-        private string message;
-        private ElementSet elements;
-
-        public BrowserForm()
-		{
-			InitializeComponent();
-		}
-
-        public BrowserForm(ExternalCommandData commandData, ref string message, ElementSet elements)
+        /// <summary>
+        /// data class object
+        /// </summary>
+        private BrowserOperationData m_optionData;
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="data">Data class object</param>
+        public BrowserForm(BrowserOperationData optionData)
         {
-            this.commandData = commandData;
-            this.message = message;
-            this.elements = elements;
+            m_optionData = optionData;
+
             InitializeComponent();
         }
 
@@ -49,10 +48,8 @@ namespace JetLabRibbon.Browsers
 
         private void buttonRunScript_Click(object sender, EventArgs e)
         {
-            /*
-            JetLab.PlaceGroup placeGroupe = new JetLab.PlaceGroup();
-            placeGroupe.Execute(commandData, ref message, elements);
-            */
+            m_optionData.Operation = Operation.CreateLevel;
+            this.Close();
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
