@@ -36,7 +36,6 @@ namespace JetLabRibbon.Browsers
                 // Show operation dialog
                 BrowserOperationData optionData = new BrowserOperationData(commandData);
 
-                /*
                 using (BrowserForm mainForm = new BrowserForm(optionData))
                 {
                     if (mainForm.ShowDialog() == DialogResult.Cancel)
@@ -44,14 +43,10 @@ namespace JetLabRibbon.Browsers
                         return Autodesk.Revit.UI.Result.Cancelled;
                     }
                 }
-                */
-
-                BrowserForm mainForm = new BrowserForm(optionData);
-                mainForm.ShowDialog();
-
-
+                
                 // Perform the operation
                 optionData.Operate();
+
             }
             catch (Exception ex)
             {

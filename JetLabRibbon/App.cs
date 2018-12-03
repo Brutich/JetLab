@@ -78,10 +78,10 @@ namespace JetLabRibbon
             
             // create push button for CreateLevel
             PushButtonData b3Data = new PushButtonData(
-                "cmdCreateLevels",
-                "Create" + System.Environment.NewLine + "  Levels  ",
+                "cmdCreateSheets",
+                "Create" + System.Environment.NewLine + "  Sheets  ",
                 thisAssemblyPath,
-                "JetLabRibbon.JetLab.CreateLevels");
+                "JetLabRibbon.JetLab.CreateSheets");
 
             PushButton pb3 = ribbonPanel1.AddItem(b3Data) as PushButton;
             pb3.ToolTip = "Create Levels";
