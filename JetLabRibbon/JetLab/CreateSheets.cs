@@ -25,12 +25,7 @@ namespace JetLabRibbon.JetLab
 
         {
             Document document = commandData.Application.ActiveUIDocument.Document;        
-            
-            /* temporary
-            // All views in document
-            ICollection<Element> view = collector.OfClass(typeof(View)).ToElements();
-            */
-            
+
             // Find a titleblock in the project, or use InvalidElementId to create a sheet with no titleblock
             ElementId titleblockId = ElementId.InvalidElementId;
 
@@ -42,9 +37,35 @@ namespace JetLabRibbon.JetLab
             if (titleblock != null)
                 titleblockId = titleblock.Id;
 
-            ElementId viewId = document.ActiveView.Id;
+            View view = document.ActiveView;
+            ElementId viewId = view.Id;
 
-            XYZ point = new XYZ(0, 0, 0);
+            // Get the BoundingBox of view.
+            BoundingBoxXYZ bbox = view.get_BoundingBox(view);
+            if (null == bbox)
+            {
+                throw new Exception("Selected view doesn't contain a bounding box.");
+            }
+
+
+            #region Point Location Calculation (WIP)
+            // get the outline max and min,
+            // offset in each direction of max point of 
+            // bounding box than the outline box.
+
+            double dMaxOffset = 0.01;
+            XYZ ptMaxOutline = new XYZ(
+              view.Outline.Max.U,
+              view.Outline.Max.V, 0);
+
+            UV ptSourceViewOriginInSheet = new UV(
+              bbox.Max.X - dMaxOffset - ptMaxOutline.X,
+              bbox.Max.Y - dMaxOffset - ptMaxOutline.Y);
+
+            int scale = view.Scale;
+
+            XYZ point = ptMaxOutline;
+            #endregion
 
 
             // Begin to place view on sheet
