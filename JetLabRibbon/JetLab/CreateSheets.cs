@@ -31,9 +31,10 @@ namespace JetLabRibbon.JetLab
 
             FilteredElementCollector collector = new FilteredElementCollector(document);
             collector.OfClass(typeof(FamilySymbol));
-            collector.OfCategory(BuiltInCategory.OST_TitleBlocks);
+            collector.OfCategory(BuiltInCategory.OST_TitleBlocks).Where(q => q.Name == "0_TBL_NewForm3").First();
 
             FamilySymbol titleblock = collector.Cast<FamilySymbol>().FirstOrDefault();
+
             if (titleblock != null)
                 titleblockId = titleblock.Id;
 
@@ -67,6 +68,12 @@ namespace JetLabRibbon.JetLab
             XYZ point = ptMaxOutline;
             #endregion
 
+
+            // Predefined point
+            point = new XYZ(
+                -2.4925,
+                0.5036,
+                1.0819);
 
             // Begin to place view on sheet
             Transaction trans = new Transaction(document);
