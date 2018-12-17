@@ -38,18 +38,25 @@ namespace JetLabRibbon.JetLab
             if (titleblock != null)
                 titleblockId = titleblock.Id;
 
+            /*
+            // Get sourse sheet
+            FilteredElementCollector vsCollector = new FilteredElementCollector(document);
+            vsCollector.OfClass(typeof(ViewSheet));
+            vsCollector.Where(q => q.Name == "План 1 этажа. М 1ː100").First();
+            ViewSheet sourseSheet = vsCollector.Cast<ViewSheet>().FirstOrDefault();
+            */
 
             // Get plan view
             View view = document.ActiveView;
             ElementId viewId = view.Id;
 
 
-            // Get explication schedule
+            // Get room schedule
             FilteredElementCollector rsCollector = new FilteredElementCollector(document);
             rsCollector.OfClass(typeof(ScheduleSheetInstance));
             rsCollector.Where(q => q.Name == "50_ROM_L01_AS").First();
-            ScheduleSheetInstance existRoomScheduleInst = rsCollector.Cast<ScheduleSheetInstance>().FirstOrDefault();            
-
+            ScheduleSheetInstance existRoomScheduleInst = rsCollector.Cast<ScheduleSheetInstance>().FirstOrDefault();           
+            
 
             #region Predefined Points
             // Predefined point for plan vieport placement
@@ -76,8 +83,8 @@ namespace JetLabRibbon.JetLab
             trans.Start("Create Sheet and Place View");
 
             // Create the new sheet
-            ViewSheet sheet = ViewSheet.Create(document, titleblockId);
-            ElementId viewSheetId = sheet.Id;
+            ViewSheet newSheet = ViewSheet.Create(document, titleblockId);
+            ElementId viewSheetId = newSheet.Id;
             if (null == viewSheetId)
             {
                 throw new Exception("Create new sheet failed.");
@@ -101,8 +108,15 @@ namespace JetLabRibbon.JetLab
                 throw new Exception("Place room schedule failed.");
             }
 
+            /*
+            ICollection<ElementId> ids = sourseSheet.GetAllPlacedViews();
+            CopyPasteOptions copyPasteOptions = new CopyPasteOptions();
+            ElementTransformUtils.CopyElements(sourseSheet, ids, newSheet, null, copyPasteOptions);
+            */
+
             trans.Commit();
-            
+
+
             return Result.Succeeded;
 
         }
