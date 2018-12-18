@@ -72,7 +72,6 @@ namespace JetLabRibbon.JetLab
                  1.0819);
             #endregion
 
-            // Begin to place views on sheet
             Transaction trans = new Transaction(document);
             trans.Start("Create Sheet and Place View");
 
@@ -83,26 +82,18 @@ namespace JetLabRibbon.JetLab
             {
                 throw new Exception("Create new sheet failed.");
             }
-            
+
+            // Clear sheet view WIP
+            FilteredElementCollector viewSheetElementsFilter = new FilteredElementCollector(document, viewSheetId);
+            document.Delete(viewSheetElementsFilter.ToElementIds());
+
+
             // Create the new viewport
             Viewport viewport = Viewport.Create(document, viewSheetId, viewId, pointViewPort);
             if (null == viewport)
             {
                 throw new Exception("Place view failed.");
             }
-
-            // Create the new room schedule WIP
-            /*
-            ScheduleSheetInstance newNoomScheduleInst = ScheduleSheetInstance.Create(
-                document,
-                viewSheetId,
-                existRoomScheduleInst.ScheduleId,
-                existRoomScheduleInst.Point);
-            if (null == newNoomScheduleInst)
-            {
-                throw new Exception("Place room schedule failed.");
-            }
-            */
 
 
             //Get all element IDs on sourse sheet           
