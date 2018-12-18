@@ -38,13 +38,19 @@ namespace JetLabRibbon.JetLab
             if (titleblock != null)
                 titleblockId = titleblock.Id;
 
-            /*
+
+            
             // Get sourse sheet
+            /*
             FilteredElementCollector vsCollector = new FilteredElementCollector(document);
             vsCollector.OfClass(typeof(ViewSheet));
             vsCollector.Where(q => q.Name == "План 1 этажа. М 1ː100").First();
-            ViewSheet sourseSheet = vsCollector.Cast<ViewSheet>().FirstOrDefault();
+            ViewSheet sourseSheet = vsCollector.Cast<ViewSheet>().First();
             */
+            Int32 id = 4002373;
+            ElementId sourseSheetId = new ElementId(id);
+            ViewSheet viewSheet = (ViewSheet)document.GetElement(sourseSheetId);
+
 
             // Get plan view
             View view = document.ActiveView;
@@ -108,11 +114,13 @@ namespace JetLabRibbon.JetLab
                 throw new Exception("Place room schedule failed.");
             }
 
-            /*
-            ICollection<ElementId> ids = sourseSheet.GetAllPlacedViews();
+            //Elements on sourse sheet
+            FilteredElementCollector elementsOnSourseFilter = new FilteredElementCollector(document, sourseSheetId);
+            ICollection<ElementId> ids = elementsOnSourseFilter.ToElementIds();
+            //ICollection<ElementId> ids = sourseSheet.GetAllPlacedViews();
             CopyPasteOptions copyPasteOptions = new CopyPasteOptions();
-            ElementTransformUtils.CopyElements(sourseSheet, ids, newSheet, null, copyPasteOptions);
-            */
+            ElementTransformUtils.CopyElements(viewSheet, ids, newSheet, null, copyPasteOptions);
+            
 
             trans.Commit();
 
