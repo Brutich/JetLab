@@ -38,7 +38,7 @@ namespace JetLabRibbon.JetLab
             if (titleblock != null)
                 titleblockId = titleblock.Id;
 
-
+            
 
             // Get sourse sheet WIP
             /*
@@ -70,18 +70,6 @@ namespace JetLabRibbon.JetLab
                 -2.4925,
                  0.5036,
                  1.0819);
-
-            // Predefined point for legend 01 placement
-            XYZ pointLeged_01 = new XYZ(
-                -0.9366,
-                 0.5089,
-                 0.0000);
-
-            // Predefined point for legend 02 placement
-            XYZ pointLeged_02 = new XYZ(
-                -0.9504,
-                 0.3157,
-                 0.0000);
             #endregion
 
             // Begin to place views on sheet
@@ -95,7 +83,7 @@ namespace JetLabRibbon.JetLab
             {
                 throw new Exception("Create new sheet failed.");
             }
-
+            
             // Create the new viewport
             Viewport viewport = Viewport.Create(document, viewSheetId, viewId, pointViewPort);
             if (null == viewport)
@@ -122,23 +110,26 @@ namespace JetLabRibbon.JetLab
             ICollection<ElementId> allElementsIds = elementsOnSourseFilter.ToElementIds();
 
 
+            //Copy views to new sheet
             ICollection<Element> viewports = elementsOnSourseFilter.OfClass(typeof(Viewport)).ToElements();
+            foreach (Viewport vport in viewports)
+            {
+                Viewport newvport = Viewport.Create(document, viewSheetId, vport.ViewId, vport.GetBoxCenter());
+            }
 
 
-            IList<ElementId> viewportsOnSheetIds = new List<ElementId>();
+            //Copy other elements to new sheet
             IList<ElementId> otherElemsOnSheetIds = new List<ElementId>();
-
 
             foreach (ElementId elemId in allElementsIds)
             {
-                if (document.GetElement(elemId).GetType() != typeof(Viewport))
+                var elem = document.GetElement(elemId);
+                if (elem.GetType() != typeof(Viewport))
                 {
-                    otherElemsOnSheetIds.Add(elemId);
+                    otherElemsOnSheetIds.Add(elemId);                    
                 }
             };
-                       
 
-            //ICollection<ElementId> ids = sourseSheet.GetAllPlacedViews();
             CopyPasteOptions copyPasteOptions = new CopyPasteOptions();
             ElementTransformUtils.CopyElements(viewSheet, otherElemsOnSheetIds, newSheet, null, copyPasteOptions);
             
