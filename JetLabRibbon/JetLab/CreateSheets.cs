@@ -39,8 +39,8 @@ namespace JetLabRibbon.JetLab
                 titleblockId = titleblock.Id;
 
 
-            
-            // Get sourse sheet
+
+            // Get sourse sheet WIP
             /*
             FilteredElementCollector vsCollector = new FilteredElementCollector(document);
             vsCollector.OfClass(typeof(ViewSheet));
@@ -103,7 +103,8 @@ namespace JetLabRibbon.JetLab
                 throw new Exception("Place view failed.");
             }
 
-            // Create the new room schedule
+            // Create the new room schedule WIP
+            /*
             ScheduleSheetInstance newNoomScheduleInst = ScheduleSheetInstance.Create(
                 document,
                 viewSheetId,
@@ -113,13 +114,33 @@ namespace JetLabRibbon.JetLab
             {
                 throw new Exception("Place room schedule failed.");
             }
+            */
 
-            //Elements on sourse sheet
+
+            //Get all element IDs on sourse sheet           
             FilteredElementCollector elementsOnSourseFilter = new FilteredElementCollector(document, sourseSheetId);
-            ICollection<ElementId> ids = elementsOnSourseFilter.ToElementIds();
+            ICollection<ElementId> allElementsIds = elementsOnSourseFilter.ToElementIds();
+
+
+            ICollection<Element> viewports = elementsOnSourseFilter.OfClass(typeof(Viewport)).ToElements();
+
+
+            IList<ElementId> viewportsOnSheetIds = new List<ElementId>();
+            IList<ElementId> otherElemsOnSheetIds = new List<ElementId>();
+
+
+            foreach (ElementId elemId in allElementsIds)
+            {
+                if (document.GetElement(elemId).GetType() != typeof(Viewport))
+                {
+                    otherElemsOnSheetIds.Add(elemId);
+                }
+            };
+                       
+
             //ICollection<ElementId> ids = sourseSheet.GetAllPlacedViews();
             CopyPasteOptions copyPasteOptions = new CopyPasteOptions();
-            ElementTransformUtils.CopyElements(viewSheet, ids, newSheet, null, copyPasteOptions);
+            ElementTransformUtils.CopyElements(viewSheet, otherElemsOnSheetIds, newSheet, null, copyPasteOptions);
             
 
             trans.Commit();
