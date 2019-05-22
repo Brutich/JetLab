@@ -8,6 +8,7 @@ using System.Reflection;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace JetLabRibbon
 {
@@ -87,14 +88,15 @@ namespace JetLabRibbon
             pb3.ToolTip = "Create Levels";
             BitmapImage pb3Image = new BitmapImage(new Uri("pack://application:,,,/JetLabRibbon;component/Resources/JetLab.png"));
             pb3.LargeImage = pb3Image;
-            
+
 
             // create push button for Browser
+            string browserFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Autodesk\Revit\Addins\2019\BIMBrowser.dll");
             PushButtonData b2Data = new PushButtonData(
 				"cmdOpenBrowser",
 				"Families" + System.Environment.NewLine + "  Browser  ",
-				thisAssemblyPath,
-				"JetLabRibbon.Browsers.Browser");
+                browserFileName,
+                "BIMBrowser.BIMBrowserCommand");
 
 			PushButton pb2 = ribbonPanel2.AddItem(b2Data) as PushButton;
 			pb2.ToolTip = "Open Families Browser";
